@@ -18,10 +18,7 @@ import {
   ChevronRight, 
   Menu, 
   X,
-  Instagram,
-  Facebook,
-  Twitter,
-  ExternalLink
+  Facebook
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 
@@ -174,8 +171,37 @@ export default function App() {
 
       {/* --- Hero Section --- */}
       <section id="hero" className="relative min-h-screen flex items-center pt-20 overflow-hidden">
-        <div className="absolute inset-0 z-0">
+        <div className="absolute inset-0 z-0 overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-br from-cyan-50/50 to-white z-10" />
+          
+          {/* Animated Blobs */}
+          <motion.div 
+            animate={{ 
+              x: [0, 100, 0],
+              y: [0, 50, 0],
+              scale: [1, 1.1, 1]
+            }}
+            transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+            className="absolute -top-20 -left-20 w-96 h-96 bg-cyan-200/30 rounded-full blur-[100px]"
+          />
+          <motion.div 
+            animate={{ 
+              x: [0, -80, 0],
+              y: [0, 120, 0],
+              scale: [1, 1.2, 1]
+            }}
+            transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
+            className="absolute top-1/2 -right-20 w-[500px] h-[500px] bg-blue-100/20 rounded-full blur-[120px]"
+          />
+          <motion.div 
+            animate={{ 
+              x: [0, 50, 0],
+              y: [0, -100, 0],
+            }}
+            transition={{ duration: 18, repeat: Infinity, ease: "linear" }}
+            className="absolute bottom-0 left-1/4 w-80 h-80 bg-slate-200/30 rounded-full blur-[80px]"
+          />
+
           <img 
             src="https://images.unsplash.com/photo-1562654501-a0ccc0fc3fb1?auto=format&fit=crop&q=80&w=2000" 
             className="w-full h-full object-cover opacity-20"
@@ -351,10 +377,6 @@ export default function App() {
               <h2 className="text-sm font-bold text-cyan-600 uppercase tracking-[0.2em] mb-3">معرض الأعمال</h2>
               <h3 className="text-4xl font-black text-slate-900">شاهد جودة مخرجاتنا</h3>
             </div>
-            <button className="px-6 py-3 border border-slate-200 rounded-xl font-bold hover:bg-slate-50 transition-all flex items-center gap-2">
-              مشاهدة المزيد على إنستجرام
-              <Instagram className="w-5 h-5" />
-            </button>
           </div>
 
           <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
@@ -574,7 +596,12 @@ export default function App() {
           </div>
 
           <div className="pt-12 border-t border-slate-100 flex flex-col md:flex-row justify-between items-center gap-6 text-sm text-slate-400">
-            <p>© {new Date().getFullYear()} مطبعة النور. جميع الحقوق محفوظة.</p>
+            <div className="flex flex-col items-center md:items-start gap-2">
+              <p>© {new Date().getFullYear()} مطبعة النور. جميع الحقوق محفوظة.</p>
+              <p className="text-xs">
+                تطوير <a href="https://hamzahub.shop" target="_blank" rel="noopener noreferrer" className="font-bold text-slate-600 hover:text-cyan-600 transition-colors">HAMZA Hilal</a>
+              </p>
+            </div>
             <div className="flex gap-8">
               <a href="#" className="hover:text-cyan-600 transition-colors">الشروط والأحكام</a>
               <a href="#" className="hover:text-cyan-600 transition-colors">سياسة الكوكيز</a>
